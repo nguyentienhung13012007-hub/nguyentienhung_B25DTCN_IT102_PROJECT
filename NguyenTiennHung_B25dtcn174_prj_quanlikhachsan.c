@@ -98,13 +98,25 @@ void addRoom() {
     } while (newRoom.type != 1 && newRoom.type != 2);
 
     // Nhap gia phong 
-    do {
-        printf("Nhap gia phong: ");
-        scanf("%lf", &newRoom.price);
-        if (newRoom.price <= 0)
-            printf("Gia phong phai lon hon 0!\n");
-    } while (newRoom.price <= 0);
+    int result;
 
+do {
+    printf("Nhap gia phong: ");
+    result = scanf("%lf", &newRoom.price);
+    while (getchar() != '\n'); // xóa b? nh? d?m
+
+    if (result != 1) {
+        printf("Loi: Gia phong phai la mot so!\n");
+        continue;
+    }
+
+    if (newRoom.price <= 0) {
+        printf("Loi: Gia phong phai lon hon 0!\n");
+        continue;
+    }
+
+    break; // hop le
+} while (1);
     newRoom.status = 0; // mac dinh Trong
     dss[soPhong++] = newRoom;
 
@@ -137,16 +149,26 @@ void updateRoom() {
         }
      }while(dss[i].type != 1 && dss[i].type != 2);
     //nhap den khi nao thoa man gia phong >0  
-       do {
-        printf("Gia phong hien tai: %lf  .  Nhap gia phong moi: ",dss[i].price);
-        scanf("%lf", &dss[i].price);
+       int result;
 
-        if (dss[i].price <= 0)
-            printf("Gia phong phai lon hon 0!\n");
+do {
+    printf("Gia phong hien tai: %lf  .  Nhap gia phong moi: ",dss[i].price);
+    result = scanf("%lf", &dss[i].price);
+    while (getchar() != '\n'); // xóa b? nh? d?m
 
-     } while (dss[i].price <= 0);
-     
-     
+    if (result != 1) {
+        printf("Loi: Gia phong phai la mot so!\n");
+        continue;
+    }
+
+    if (dss[i].price <= 0) {
+        printf("Loi: Gia phong phai lon hon 0!\n");
+        continue;
+    }
+
+    break; // hop le
+} while (1);
+     //nhap trang thai phong 
          do{
    	  printf("Nhap trang thai phong moi  (0:Trong ;1: Dang o;2: Bao tri): ");
    	  scanf("%d",&dss[i].status);
